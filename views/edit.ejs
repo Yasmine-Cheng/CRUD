@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CD Collection</title>
+</head>
+<<body>
+  <h2>Edit</h2>
+      <% cds.forEach(function(cds) { %>
+        <form action="/product" method="POST">
+          <input type="text" value="<%= cds.Title %>" name="Title">
+          <input type="text" value="<%= cds.Artist %>" name="Artist">
+          <input type="text" value="<%= cds.Genre %>" name="Genre">
+          <button onclick="myupdate()" data-id="<%= cds._id %>">Edit<%= cds._id %></button>
+        </form>
+      <% }) %>
+</body>
+</html>
+
+      <!-- data-title="hahah" data-artist="<%= cds.Artist %>" data-genre="<%= cds.Genre %>" -->
+
+      <ul class="quotes">
+        <!-- Loop through quotes -->
+        <% for(var i = 0; i < quotes.length; i++) {%>
+          <li class="quote">
+            <span><%= quotes[i].name %></span>:
+            <!-- Output quote from the iterated quote object -->
+            <span><%= quotes[i].quote %></span>
+          </li>
+        <% } %>
+      </ul>
+
+
+      <% cds.forEach(function(cds) { %>
+        <form action="/product/<%= cds._id %>" method="POST">
+          <input type="text" value="<%= cds.Title %>"  name="Title" id="title_<%= cds._id %>">
+          <input type="text" value="<%= cds.Artist %>"  name="Artist" id="artist_<%= cds._id %>">
+          <input type="text" value="<%= cds.Genre %>"  name="Genre" id="genre_<%= cds._id %>">
+          <button onclick="myupdate()" type="submit" data-id="<%= cds._id %>">Edit</button>
+        </form>
+      <% }) %>
+
+
+      <ul class="cds">
+        <!-- Loop through quotes -->
+        <% for(var i = 0; i < cds.length; i++) {%>
+          <li class="cds">
+            <input type="text" value="<%= cds.Title %>"  name="Title" id="title_<%= cds._id %>">
+            <input type="text" value="<%= cds.Artist %>"  name="Artist" id="artist_<%= cds._id %>">
+            <input type="text" value="<%= cds.Genre %>"  name="Genre" id="genre_<%= cds._id %>">
+          </li>
+        <% } %>
+      </ul>
+       <% cds.forEach(function(cds) { %>
+        <form action="/product/<%= cds._id %>" method="POST">
+          <input type="text" value="<%= cds.Title %>"  name="Title" id="title_<%= cds._id %>">
+          <input type="text" value="<%= cds.Artist %>"  name="Artist" id="artist_<%= cds._id %>">
+          <input type="text" value="<%= cds.Genre %>"  name="Genre" id="genre_<%= cds._id %>">
+          <button onclick="myupdate()" type="submit" data-id="<%= cds._id %>">Edit</button>
+        </form>
+      <% }) %>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CD Collection</title>
+</head>
+<body>
+  <h1>Nodejs_HW</h1>
+  <h2>Insert New</h2>
+  <form action="/product" method="POST">
+    <input type="text" name="Title">
+    <input type="text" name="Artist">
+    <input type="text" name="Genre">
+    <button type="submit">Submit</button>
+  </form>
+  <h2>Records</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <td>_ID_</td>
+        <td>Title</td>
+        <td>Artist</td>
+        <td>Genre</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% cds.forEach(function(cds) { %>
+      <tr>
+        <td><%= cds._id %></td>
+        <td><%= cds.Title %></td>
+        <td><%= cds.Artist %></td>
+        <td><%= cds.Genre %></td>
+        <td>
+          <button onclick="mydelete()" data-id="<%= cds._id %>">Delete</button>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <br>
+  <button onclick="myFunction()">Update</button>
+  <div id="myDIV" style='display:none;'>
+    <h2>Edit</h2>
+      <ul class="cds">
+        <!-- Loop through quotes -->
+        <% for(var i = 0; i < cds.length; i++) {%>
+          <li class="cds">
+            Title:<input type="text" value="<%= cds[i].Title %>"  name="Title" id="title_<%= cds[i]._id %>">&nbsp;&nbsp;
+            Artist:<input type="text" value="<%= cds[i].Artist %>"  name="Artist" id="artist_<%= cds[i]._id %>">&nbsp;&nbsp;
+            Genre:<input type="text" value="<%= cds[i].Genre %>"  name="Genre" id="genre_<%= cds[i]._id %>">&nbsp;&nbsp;
+            <button onclick="myupdate()" type="submit" data-id="<%= cds[i]._id %>">Edit</button>
+          </li>
+        <% } %>
+      </ul>
+  </div>
+  <script type="text/javascript" src="/product.js"></script>
+</body>
+</html>
